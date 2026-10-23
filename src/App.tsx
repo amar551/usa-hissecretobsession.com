@@ -35,7 +35,6 @@ export default function App() {
     minutes: number;
   }>({ show: false, name: 'Thomas D.', state: 'Mississippi', minutes: 19 });
 
-  const [showPopup, setShowPopup] = useState(false);
   const [timeLeft, setTimeLeft] = useState({ days: 1, hours: 16, minutes: 1, seconds: 3 });
 
   const [activeTab, setActiveTab] = useState<'landing' | 'quiz' | 'vault'>('landing');
@@ -81,15 +80,10 @@ export default function App() {
       }, 5000);
     };
 
-    const popupTimer = setTimeout(() => {
-      setShowPopup(true);
-    }, 4000);
-
     const initialToast = setTimeout(showToast, 3000);
     const toastInterval = setInterval(showToast, 14000);
 
     return () => {
-      clearTimeout(popupTimer);
       clearTimeout(initialToast);
       clearInterval(toastInterval);
     };
@@ -300,8 +294,10 @@ export default function App() {
                     <Sparkles className="w-3.5 h-3.5 text-rose-700" /> James Bauer’s Official Guide
                   </span>
                   
-                  <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-extrabold tracking-tight leading-[1.12] text-slate-900">
-                    His Secret Obsession – Unlock His Hero Instinct and Build the Deep, Lasting Love You’ve Always Wanted
+                  <h1 className="text-2xl sm:text-4xl lg:text-[42px] font-serif font-extrabold tracking-tight leading-snug text-slate-900">
+                    <span className="block">His Secret Obsession –</span>
+                    <span className="block">Unlock His Hero Instinct and Build</span>
+                    <span className="block">the Deep, Lasting Love You’ve Always Wanted</span>
                   </h1>
 
                   <p className="text-lg sm:text-xl text-slate-700 leading-relaxed font-sans">
@@ -397,6 +393,64 @@ export default function App() {
                 alt="Trustpilot Reviews" 
                 className="h-8 object-contain"
               />
+            </div>
+          </section>
+
+          {/* Embedded Special Flash Discount Section with Live Countdown Timer */}
+          <section className="py-12 bg-gradient-to-r from-pink-100 via-rose-50 to-pink-100 border-b border-rose-200">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6">
+              <div className="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border-2 border-rose-300 text-center space-y-6 relative overflow-hidden">
+                <div className="absolute top-0 right-0 transform translate-x-8 -translate-y-8 w-32 h-32 bg-rose-100 rounded-full blur-2xl pointer-events-none"></div>
+                <div className="absolute bottom-0 left-0 transform -translate-x-8 translate-y-8 w-32 h-32 bg-pink-100 rounded-full blur-2xl pointer-events-none"></div>
+
+                <div className="relative z-10 space-y-4">
+                  <span className="inline-block bg-rose-100 text-rose-800 text-xs sm:text-sm font-extrabold uppercase tracking-widest px-4 py-1.5 rounded-full border border-rose-200 shadow-sm">
+                    ⚡ Special Flash Discount
+                  </span>
+
+                  <h3 className="text-2xl sm:text-4xl font-serif font-extrabold text-slate-900 tracking-tight">
+                    Wait! Claim Your 75% Discount Before It Expires
+                  </h3>
+
+                  <p className="text-base sm:text-lg text-slate-700 max-w-2xl mx-auto leading-relaxed">
+                    Get James Bauer’s complete <strong>His Secret Obsession</strong> guide, audio version, and workbook today for just <strong className="text-rose-600 text-xl sm:text-2xl font-black">$49</strong> <span className="line-through text-slate-400 font-semibold">(Reg. $186)</span>.
+                  </p>
+
+                  <div className="bg-pink-50/90 max-w-lg mx-auto p-4 sm:p-5 rounded-2xl border border-rose-200 shadow-inner flex justify-center items-center gap-3 sm:gap-6 text-center">
+                    <div>
+                      <span className="block text-2xl sm:text-4xl font-black text-slate-900 font-mono tracking-wider">{String(timeLeft.days).padStart(2, '0')}</span>
+                      <span className="text-[10px] sm:text-xs text-rose-700 uppercase font-extrabold">Days</span>
+                    </div>
+                    <span className="text-2xl sm:text-3xl font-black text-rose-400 pb-2">:</span>
+                    <div>
+                      <span className="block text-2xl sm:text-4xl font-black text-slate-900 font-mono tracking-wider">{String(timeLeft.hours).padStart(2, '0')}</span>
+                      <span className="text-[10px] sm:text-xs text-rose-700 uppercase font-extrabold">Hours</span>
+                    </div>
+                    <span className="text-2xl sm:text-3xl font-black text-rose-400 pb-2">:</span>
+                    <div>
+                      <span className="block text-2xl sm:text-4xl font-black text-slate-900 font-mono tracking-wider">{String(timeLeft.minutes).padStart(2, '0')}</span>
+                      <span className="text-[10px] sm:text-xs text-rose-700 uppercase font-extrabold">Minutes</span>
+                    </div>
+                    <span className="text-2xl sm:text-3xl font-black text-rose-400 pb-2">:</span>
+                    <div>
+                      <span className="block text-2xl sm:text-4xl font-black text-slate-900 font-mono tracking-wider">{String(timeLeft.seconds).padStart(2, '0')}</span>
+                      <span className="text-[10px] sm:text-xs text-rose-700 uppercase font-extrabold">Seconds</span>
+                    </div>
+                  </div>
+
+                  <div className="pt-2 max-w-md mx-auto space-y-2">
+                    <a 
+                      href={AFFILIATE_URL} 
+                      target="_blank" 
+                      rel="nofollow"
+                      className="w-full block bg-gradient-to-r from-rose-600 via-pink-600 to-rose-600 hover:from-rose-700 hover:to-pink-700 text-white font-extrabold text-lg sm:text-xl py-4 px-6 rounded-2xl shadow-xl hover:shadow-rose-400/30 transition-all transform hover:-translate-y-0.5"
+                    >
+                      Claim $49 Discount Now &rarr;
+                    </a>
+                    <p className="text-xs text-slate-500 font-medium">Instant Digital Access • 60-Day Money-Back Guarantee</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
 
@@ -941,69 +995,7 @@ export default function App() {
           </button>
         </div>
       )}
-
-      {/* Exit / Time-Limited Popup Modal with Working Timer */}
-      {showPopup && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in">
-          <div className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl border border-rose-200 space-y-6 text-center">
-            <button 
-              onClick={() => setShowPopup(false)}
-              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-rose-50 text-slate-500 hover:bg-rose-100 flex items-center justify-center font-bold"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            <span className="bg-rose-100 text-rose-800 text-xs font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full">Special Flash Discount</span>
-
-            <h3 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900">
-              Wait! Claim Your 75% Discount Before It Expires
-            </h3>
-
-            <p className="text-sm text-slate-600">
-              Get James Bauer’s complete <strong>His Secret Obsession</strong> guide, audio version, and workbook today for just <strong className="text-rose-600 text-lg">$49</strong> (Reg. $186).
-            </p>
-
-            <div className="bg-pink-50/80 p-4 rounded-xl border border-rose-200 flex justify-center gap-4 text-center">
-              <div>
-                <span className="block text-2xl font-bold text-slate-900 font-mono">{String(timeLeft.days).padStart(2, '0')}</span>
-                <span className="text-[10px] text-slate-500 uppercase font-bold">Days</span>
-              </div>
-              <span className="text-2xl font-bold text-rose-400">:</span>
-              <div>
-                <span className="block text-2xl font-bold text-slate-900 font-mono">{String(timeLeft.hours).padStart(2, '0')}</span>
-                <span className="text-[10px] text-slate-500 uppercase font-bold">Hours</span>
-              </div>
-              <span className="text-2xl font-bold text-rose-400">:</span>
-              <div>
-                <span className="block text-2xl font-bold text-slate-900 font-mono">{String(timeLeft.minutes).padStart(2, '0')}</span>
-                <span className="text-[10px] text-slate-500 uppercase font-bold">Minutes</span>
-              </div>
-              <span className="text-2xl font-bold text-rose-400">:</span>
-              <div>
-                <span className="block text-2xl font-bold text-slate-900 font-mono">{String(timeLeft.seconds).padStart(2, '0')}</span>
-                <span className="text-[10px] text-slate-500 uppercase font-bold">Seconds</span>
-              </div>
-            </div>
-
-            <div className="space-y-3">
-              <a 
-                href={AFFILIATE_URL} 
-                target="_blank" 
-                rel="nofollow"
-                className="w-full block bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white font-extrabold text-base py-4 rounded-xl shadow-lg hover:shadow-xl transition-all"
-              >
-                Claim $49 Discount Now &rarr;
-              </a>
-              <button 
-                onClick={() => setShowPopup(false)}
-                className="text-xs text-slate-400 hover:text-slate-600 underline"
-              >
-                No thanks, I'll pay full price later
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
+
