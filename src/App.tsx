@@ -979,7 +979,7 @@ export default function App() {
         <div className="fixed bottom-6 left-6 z-50 bg-white rounded-xl shadow-2xl border border-rose-200 p-3.5 max-w-xs w-full flex items-center gap-3 animate-slide-in">
           <img 
             src="https://hissecratobsession.com/wp-content/uploads/2026/06/where-to-buy-his-secret-obsession.webp" 
-            alt="Product" 
+            alt="His Secret Obsession Program by James Bauer" 
             className="w-12 h-12 rounded-lg object-cover bg-rose-50 flex-shrink-0"
           />
           <div className="flex-1 min-w-0">
